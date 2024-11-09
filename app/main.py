@@ -1,7 +1,7 @@
 # %%
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+from app.utils import render_markdown
 
 app = FastAPI()
 
@@ -16,6 +16,10 @@ class Output(BaseModel):
 @app.get("/")
 def home():
     return {"health_check": "OK"}
+
+@app.get("/readme")
+def readme():
+    return render_markdown("README.md", {"Creator": "Adde"})
 
 
 @app.post("/api", response_model=Output)
