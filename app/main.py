@@ -1,4 +1,5 @@
-# %%
+import os
+from markdown import markdown
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, HTMLResponse, Response
 from pydantic import BaseModel
@@ -24,7 +25,13 @@ def home():
 def readme():
     html = render_markdown("README.md", {"creator": "Adrian"})
 
-    html = render_markdown("app/templates/simpe_with_code.md")
+    blogposts = os.listdir("app/templates")
+    table_of_contents_blog = "### Blogposts:"
+
+    for post in blogposts:
+        table_of_contents_blog += f"\n* [{post}](/blog/{post})"
+
+    html += markdown(table_of_contents_blog)
     return html
 
 
@@ -34,13 +41,6 @@ def get_markdown_blog(blog_post_name):
     return html
 
 
-# @app.get("/readme2", response_class=Response)
-# def readme2():
-#     md = "README.md"
-#     with open(md, "r") as file:
-#         return Response(content=file.read(), media_type="text/markdown")
-#
-#
 @app.post("/api", response_model=Output)
 def predict(payload: Input):
     greeting = f"Hello {payload.name}"
