@@ -20,3 +20,14 @@ To install docker on your pi is as simple as
 ``` {bash}
 curl -sSL get.docker.com | sh
 ```
+
+
+Only allow connections on ssh, http and (https?) ports...
+```
+pi@raspberrypi:~$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+pi@raspberrypi:~$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+pi@raspberrypi:~$ sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+pi@raspberrypi:~$ sudo iptables -A INPUT -j DROP
+```
+
+
