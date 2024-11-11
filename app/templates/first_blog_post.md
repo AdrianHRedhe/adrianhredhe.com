@@ -1,35 +1,30 @@
 # This is a test 
-RUN THIS THING HERE
 
 ```{Python}
 
-from flask import jinja
+from fastapi import FastAPI
 
-run bullshit app
-
+app = FastAPI()
 ```
 
 
-Also minor tips and tricks:
-``` {bash}
+Running the application on your computer:
+```{bash}
 cd adrianhredhe.com
-``` 
-
-``` {bash}
 conda activate fastapi
 python -m uvicorn app.main:app --reload
 ```
 
 
-For running kernels in Molten.nvim
-```
+For running conda as kernels in Molten.nvim:
+```{bash}
 conda create -n fastapi
 conda activate fastapi
 conda install -c anaconda ipykernel
 python -m ipykernel install --user --name=fastapi
 ```
 
-see list of prunable kernels
-```
+see list of prunable kernels to do spring cleaning:
+```{bash}
 jupyter kernelspec list
 ```

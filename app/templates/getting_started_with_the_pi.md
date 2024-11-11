@@ -1,3 +1,19 @@
+## Lathund simple stuff
+
+To install with no screen install the 64 bit os
+with ssh enabled with password and WLAN enabled
+and also with ethernet cabel (hängslen och livrem)
+
+
+finding the raspberry pi:
+``` {bash}
+ping raspberrypi.local
+```
+
+then obviously:
+``` {bash}
+ssh pi@192.168.xxx.xxx
+```
 
 
 To install docker on your pi is as simple as
