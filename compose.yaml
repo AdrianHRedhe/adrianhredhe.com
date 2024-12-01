@@ -1,0 +1,31 @@
+services:
+  server:
+    build:
+      dockerfile: server.dockerfile
+      context: .
+    networks:
+      - app-network
+
+
+  caddy:
+    image: serfriz/caddy-cloudflare:latest
+
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    
+    environment:
+      CLOUDFLARE_API_TOKEN: ""
+      DUCKDNS_TOKEN: ""
+
+    volumes:
+      - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
