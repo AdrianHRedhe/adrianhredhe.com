@@ -1,0 +1,8 @@
+adrianhredhe.com, www.adrianhredhe.com {
+    reverse_proxy server:8889
+
+    tls {
+        dns cloudflare {$CLOUDFLARE_API_TOKEN}
+        propagation_delay   2m
+	}
+}
