@@ -16,12 +16,12 @@ class Output(BaseModel):
     greeting: str
 
 
-@app.get("/")
-def home():
-    return {"health_check": "OK"}
+#@app.get("/")
+#def home():
+#    return {"health_check": "OK"}
 
 
-@app.get("/readme", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def readme():
     html = render_markdown("README.md", {"creator": "Adrian"})
 
