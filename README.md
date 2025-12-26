@@ -10,3 +10,4 @@ website were I keep some of my projects
 and other things that are handy for me.  
 
 Get my setup: (.dotfiles)[https://github.com/AdrianHRedhe/.dotfiles.git]
+Will publish blogposts on the subject
