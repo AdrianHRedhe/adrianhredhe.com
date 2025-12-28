@@ -1,23 +1,25 @@
 :root {
-  --hc: #bf8eff;        /* Header color (purple) */
+  --hc: #bf8eff;        /* Header / accent color (purple) */
+  --hc2: #4fc3ff;       /* Header / accent color (blue) */
+  --hc3: #ffd166;       /* Header / accent color (yellow) */
   --bc: #262626;        /* Background color (dark gray) */
-  --cbc: #313131;
+  --cbc: #313131;       /* Code block color */
   --tec: #eee;          /* Text color (light gray) */
-  --itpc: #141414;      /* Inner/darker background */
-  --blc: #c8c8c8;       /* Block/border color */
+  --ctec: #cccccc;
+  --blc: #404040;       /* Block/border color */
   --lhc: #f99734;       /* Link hover color (orange) */
-  --lvc: #d3b2ff;       /* Link visited color (light purple) */
   --mc: #a2a2a2;        /* Muted color (medium gray) */
-  --fc: #d5d5d5;        /* Foreground color */
   
-  /* Semantic mappings for easier use */
-  --page-bg: var(--itpc);
+  /* Semantic mappings */
   --content-bg: var(--bc);
   --text: var(--tec);
-  --accent: var(--hc);
+  --accent: var(--hc3);
+  --link-hover: var(--lhc);
+  --link-visited: color-mix(in srgb, var(--accent) 70%, white);
   --muted: var(--mc);
-  --border: #404040;
+  --border: var(--blc);
   --code-bg: var(--cbc);
+  --code-text: var(--ctec);
   --page-gutter: clamp(2rem, 6rem, 4rem);
 }
 
@@ -27,53 +29,51 @@
   box-sizing: border-box;
 }
 
-
+/*
+    Base elements
+*/
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
-               'Helvetica Neue', Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
   line-height: 1.6;
   color: var(--text);
-  background-color: var(--bc);
+  background-color: var(--content-bg);
 }
 
 
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem 0;
+  border-radius: 4px;
+}
+
+ /* 
+   Layout
+*/
 .container, main {
   margin-inline: var(--page-gutter);
   max-width: 70ch;
 }
 
-/* Header and Navigation */
-header {
-  margin-bottom: 0.5rem;
-}
-
-header a {
-  text-decoration: none;
-  color: var(--text);
-  font-weight: 600;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: flex-end;
-  list-style: none;
-  gap: 1.5rem;
-}
-
-nav a {
-  color: var(--hc);
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: var(--lhc);
-  text-decoration: underline;
-}
-
-/* Typography */
+/* 
+   Typography 
+*/
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -104,58 +104,38 @@ h1 a, h2 a, h3 a {
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover {
-  color: var(--hc);
+  color: var(--accent);
 }
 
 p {
   margin-bottom: 1rem;
 }
 
-/* Links */
-a {
-  color: var(--hc);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--lhc);
-  text-decoration: underline;
-}
-
-a:visited {
-  color: var(--lvc);
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 2rem 0;
-  border-radius: 4px;
-}
-
-/* Lists */
-ul, ol {
+/* 
+    Main Lists 
+*/
+main ul, main ol {
   margin: 0.1rem 0;
   padding-left: 2rem;
 }
 
-li {
-  /*margin-bottom: 0.5rem;*/
+main li {
+  margin-bottom: 0.5rem;
 }
 
-/* Code blocks */
-code {
+/* 
+    Main Pre / Code blocks 
+*/
+main code {
   font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Courier New', monospace;
   font-size: 0.9em;
   background: var(--code-bg);
-  color: #cccccc;
+  color: --code-text;
   padding: 0.2em 0.4em;
   border-radius: 3px;
 }
 
-pre {
+main pre {
   background: var(--code-bg);
   padding: 1rem;
   overflow-x: auto;
@@ -164,12 +144,14 @@ pre {
   border: 1px solid var(--border);
 }
 
-pre code {
+main pre code {
   background: none;
   padding: 0;
 }
 
-/* Footer */
+/* 
+    Footer 
+*/
 footer {
   margin-top: 4rem;
   padding-top: 2rem;
@@ -178,10 +160,12 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Header */
+/* 
+   Overwrites for Header and Navigation 
+    (full-width chrome + scoped nav styles)
+*/
 .site-header {
-  background-color: var(--hc);
-  /*border-bottom: 0px solid var(--hc);*/
+  background-color: var(--accent);
   padding: 1.5rem 0;
   margin-bottom: 1.5rem;
 }
@@ -192,31 +176,43 @@ footer {
   gap: 2rem;
 }
 
-.logo-ascii {
+.site-header .logo-ascii {
   font-family: 'Courier New', Courier, monospace;
-/*JetBrains Mono 800*/
   font-weight: bold;
   font-size: 0.7rem;
   line-height: 1.2;
-  color: var(--page-bg);
+  color: var(--content-bg);
   margin: 0;
   padding: 0;
   border: none;
-  background: var(--hc);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
-header nav a {
+.site-header a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.site-header nav a {
   color: var(--content-bg);
   text-decoration: none;
 }
 
-header nav a:hover {
-  color: var(--lhc);
-  text-decoration: underline;
+.site-header nav a:hover {
+  color: var(--link-hover);
+  text-decoration: none;
 }
 
-header nav a:visited {
-  color: var(--content-bg);
+.site-header nav a:visited {
+  color: none;
 }
 
+.site-header nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  list-style: none;
+  gap: 1.5rem;
+}
