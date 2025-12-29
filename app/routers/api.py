@@ -1,19 +1,12 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+
+from app.models.dataclasses import ApiInput, ApiOutput
 
 router = APIRouter()
 
 
-class Input(BaseModel):
-    name: str
-
-
-class Output(BaseModel):
-    greeting: str
-
-
-@router.post("/api", response_model=Output)
-def predict(payload: Input):
+@router.post("/api", response_model=ApiOutput)
+def predict(payload: ApiInput):
     """
     Toy API just to ensure posts work as they should.
     """
