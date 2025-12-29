@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.config.themes import get_theme
 from app.routers import api, blog
 from app.utils.render_markdown import render_markdown
 
@@ -22,6 +23,7 @@ def home():
         {
             "creator": "Adrian",
             "blogposts": blogposts,
+            "theme": get_theme("yellow"),
         },
     )
     return html

@@ -15,7 +15,7 @@ def get_templates():
     return Jinja2Templates(directory="app/templates")
 
 
-def render_markdown(template_path, variables=None):
+def render_markdown(template_path, variables={}):
     templates = get_templates()
 
     # Use jinja to render as template (can add variables)
@@ -26,6 +26,7 @@ def render_markdown(template_path, variables=None):
     html_body = markdown.markdown(rendered_md, extensions=["fenced_code", "codehilite"])
 
     pygments_css = get_pygments_css()
+    theme = variables.get("theme")
 
     full_html_template = templates.get_template("base.html")
 
@@ -34,5 +35,6 @@ def render_markdown(template_path, variables=None):
         {
             "content": html_body,
             "pygments_css": pygments_css,
+            "theme": theme,
         },
     )

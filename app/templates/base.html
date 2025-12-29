@@ -6,6 +6,14 @@
     <title>adrianhredhe</title>
     <link rel="stylesheet" href="/static/style.css">
     <style>{{ pygments_css | safe }}</style>
+
+    <!--{% if theme %}-->
+    <style>
+        :root {
+            --accent: {{ theme.accent }};
+        }
+    </style>
+    <!--{% endif %}-->
 </head>
 <body>
     <header class="site-header">
