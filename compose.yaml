@@ -6,7 +6,6 @@ services:
     networks:
       - app-network
 
-
   caddy:
     image: serfriz/caddy-cloudflare:latest
 
@@ -15,10 +14,9 @@ services:
       - "80:80"
       - "443:443"
       - "443:443/udp"
-    
+
     environment:
-      CLOUDFLARE_API_TOKEN: ""
-      DUCKDNS_TOKEN: ""
+      env_file: .env
 
     volumes:
       - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
