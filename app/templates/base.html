@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adrianhredhe</title>
+
+    {% if theme and theme.favicon %}
+        <link rel="icon" type="image/png" href="/static/icons/{{ theme.favicon }}">
+    {% else %}
+        <link rel="icon" type="image/png" href="/static/icons/favicon.png">
+    {% endif %}
+
     <link rel="stylesheet" href="/static/style.css">
     <style>{{ pygments_css | safe }}</style>
 
