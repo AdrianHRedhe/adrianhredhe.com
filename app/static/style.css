@@ -68,7 +68,7 @@ img {
  /* 
    Layout
 */
-.container, main {
+.container {
   margin-inline: var(--page-gutter);
   max-width: 70ch;
 }
