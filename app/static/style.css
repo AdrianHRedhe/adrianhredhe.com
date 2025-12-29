@@ -2,6 +2,8 @@
   --hc: #bf8eff;        /* Header / accent color (purple) */
   --hc2: #4fc3ff;       /* Header / accent color (blue) */
   --hc3: #ffd166;       /* Header / accent color (yellow) */
+  --hc4: #95e6cb;       /* Header / accent color (cyan) */
+  --hc5: #F23C16;       /* Header / accent color (red) */
   --bc: #262626;        /* Background color (dark gray) */
   --cbc: #313131;       /* Code block color */
   --tec: #eee;          /* Text color (light gray) */
@@ -15,7 +17,7 @@
   --text: var(--tec);
   --accent: var(--hc3);
   --link-hover: var(--lhc);
-  --link-visited: color-mix(in srgb, var(--accent) 70%, white);
+  --link-visited: color-mix(in srgb, var(--accent) 60%, white);
   --muted: var(--mc);
   --border: var(--blc);
   --code-bg: var(--cbc);
@@ -215,4 +217,8 @@ footer {
   align-items: flex-end;
   list-style: none;
   gap: 1.5rem;
+}
+
+.site-header .logo-link {
+    text-decoration: none;
 }

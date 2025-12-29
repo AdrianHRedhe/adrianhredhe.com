@@ -1,37 +1,38 @@
+from functools import lru_cache
+
 import markdown
-from jinja2 import Template
+from fastapi.templating import Jinja2Templates
 from pygments.formatters import HtmlFormatter
 
 
-def _load_static_assets():
-    """Helper to load assets once."""
-    # Get style for code highlighter
-    formatter = HtmlFormatter(style="lightbulb", full=True, cssclass="codehilite")
-    pygments_css = formatter.get_style_defs()
-
-    # Load style for everything else
-    try:
-        with open("app/static/style.css", "r") as f:
-            style_css = f.read()
-    except FileNotFoundError:
-        style_css = ""
-
-    return f"<style>{pygments_css}\n{style_css}</style>"
+@lru_cache()
+def get_pygments_css():
+    return HtmlFormatter(style="lightbulb").get_style_defs(".codehilite")
 
 
-# Load css only once
-CACHED_CSS = _load_static_assets()
+@lru_cache()
+def get_templates():
+    return Jinja2Templates(directory="app/templates")
 
 
-def render_markdown(filename, variables=None):
-    with open(filename, "r") as file:
-        markdown_string = file.read()
+def render_markdown(template_path, variables=None):
+    templates = get_templates()
 
     # Use jinja to render as template (can add variables)
-    template = Template(markdown_string)
-    rendered_md = template.render(variables or {})
+    md_template = templates.get_template(template_path)
+    rendered_md = md_template.render(variables or {})
 
-    # Use markdown to convert to HTML
-    html = markdown.markdown(rendered_md, extensions=["fenced_code", "codehilite"])
+    # Convert markdown to html and use extensions for highlighting code in code blocks
+    html_body = markdown.markdown(rendered_md, extensions=["fenced_code", "codehilite"])
 
-    return CACHED_CSS + html
+    pygments_css = get_pygments_css()
+
+    full_html_template = templates.get_template("base.html")
+
+    # Finally use templates once again but for returning page
+    return full_html_template.render(
+        {
+            "content": html_body,
+            "pygments_css": pygments_css,
+        },
+    )

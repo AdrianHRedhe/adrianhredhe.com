@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adrianhredhe</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>{{ pygments_css | safe }}</style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="logo-link">
+                {% include 'partials/logo.html' %}
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <!--<li><a href="/blog">Blog</a></li>-->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+            {{ content | safe }}
+        {% endblock %}
+    </main>
+
+    <!--<footer class="site-footer">-->
+        <!--<p>Adrian Häusler Redhe</p>-->
+    <!--</footer>-->
+</body>
+</html>
