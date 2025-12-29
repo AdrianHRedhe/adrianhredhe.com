@@ -8,6 +8,18 @@ from app.utils.render_markdown import render_markdown
 router = APIRouter()
 
 
+@router.get("/", response_class=HTMLResponse)
+def blog():
+    blogposts = os.listdir("app/templates/blogposts")
+    html = render_markdown(
+        "blog.md",
+        {
+            "blogposts": blogposts,
+        },
+    )
+    return html
+
+
 @router.get("/{blog_post_name}", response_class=HTMLResponse)
 def get_markdown_blog(blog_post_name):
     template_path = f"blogposts/{blog_post_name}"
