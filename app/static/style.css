@@ -22,7 +22,8 @@
   --border: var(--blc);
   --code-bg: var(--cbc);
   --code-text: var(--ctec);
-  --page-gutter: clamp(2rem, 6rem, 4rem);
+  --page-gutter: clamp(1rem, 3vw, 4rem);
+  --content-max-width: 800px;
 }
 
 * {
@@ -69,8 +70,9 @@ img {
    Layout
 */
 .container {
-  margin-inline: var(--page-gutter);
-  max-width: 70ch;
+  margin-inline: auto;       /* This centers the column */
+  padding-inline: var(--page-gutter); /* This provides the dynamic margin */
+  max-width: var(--content-max-width);
 }
 
 /* 
@@ -222,4 +224,42 @@ footer {
 
 .site-header .logo-link {
     text-decoration: none;
+}
+
+/*
+    Settings for narrower screens (Phone)
+*/
+@media (max-width: 600px) {
+
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+   /*putting logo and nav columnar on phone*/
+  .site-header .container {
+    width: 100%;
+    padding: 1rem 0;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1rem;
+  }
+
+  .site-header .logo-ascii {
+    text-align: center;
+    flex-shrink: 1;
+    max-width: 100%;
+    font-size: 2.0vw;
+    overflow-x: hidden;
+    white-space: pre;
+  }
+
+  .site-header nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
 }
