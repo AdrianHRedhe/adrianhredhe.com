@@ -5,5 +5,6 @@ def get_theme(theme):
         "red": {"accent": "#F23C16", "favicon": "favicon-red.png"},
         "blue": {"accent": "#4fc3ff", "favicon": "favicon-blue.png"},
         "purple": {"accent": "#bf8eff", "favicon": "favicon-purple.png"},
+        "green": {"accent": "#53b746", "favicon": "favicon-green.png"},
     }
     return themes.get(theme)
