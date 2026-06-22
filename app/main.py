@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config.themes import get_theme
-from app.routers import api, blog
+from app.routers import api, blog, services
 from app.utils.render_markdown import render_markdown
 
 app = FastAPI()
@@ -13,6 +13,7 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.include_router(blog.router, prefix="/blog", tags=["blog"])
 app.include_router(api.router, prefix="/api", tags=["api"])
+app.include_router(services.router, prefix="/services", tags=["services"])
 
 
 @app.get("/", response_class=HTMLResponse)
