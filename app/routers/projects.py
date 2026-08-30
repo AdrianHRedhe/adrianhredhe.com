@@ -30,6 +30,6 @@ def projects_index():
 def geolocalization_stockholm():
     html = render_markdown(
         "projects/geolocalization_stockholm.md",
-        {"theme": get_theme("cyan")},
+        {"theme": get_theme("purple")},
     )
     return html
