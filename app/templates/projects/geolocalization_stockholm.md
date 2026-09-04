@@ -12,6 +12,6 @@ circle marks the query's true location. Have fun!
 Source and write-up: [Stockholm-Geolocalization-Retrieval on GitHub](https://github.com/AdrianHRedhe/Stockholm-Geolocalization-Retrieval).
 Also viewable directly on [Hugging Face Spaces](https://huggingface.co/spaces/AdrianHR/Geolocalization_Stockholm_Demo).
 
-<div style="width: 100%; height: 90vh;">
+<div style="width: 100%; height: 1500px;">
 <iframe src="https://geolocalization_v1.adrianhredhe.com/" width="100%" height="100%" frameborder="0"></iframe>
 </div>
