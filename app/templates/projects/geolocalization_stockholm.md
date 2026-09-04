@@ -9,5 +9,5 @@ Source and write-up: [Stockholm-Geolocalization-Retrieval on GitHub](https://git
 Also viewable directly on [Hugging Face Spaces](https://huggingface.co/spaces/AdrianHR/Geolocalization_Stockholm_Demo).
 
 <div style="width: 100%; height: 90vh;">
-<iframe src="https://adrianhr-geolocalization-stockholm-demo.hf.space" width="100%" height="100%" frameborder="0"></iframe>
+<iframe src="https://geolocalization_v1.adrianhredhe.com/" width="100%" height="100%" frameborder="0"></iframe>
 </div>
