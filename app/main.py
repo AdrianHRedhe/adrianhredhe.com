@@ -20,11 +20,15 @@ app.include_router(projects.router, prefix="/projects", tags=["projects"])
 @app.get("/", response_class=HTMLResponse)
 def home():
     blogposts = blog.sort_blogposts(os.listdir("app/templates/blogposts"))
+    projects = os.listdir("app/templates/projects")
+    services = os.listdir("app/templates/services")
     html = render_markdown(
         "home.md",
         {
             "creator": "Adrian",
             "blogposts": blogposts,
+            "projects": projects,
+            "services": services,
             "theme": get_theme("yellow"),
         },
     )
