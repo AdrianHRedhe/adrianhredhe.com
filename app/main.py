@@ -19,7 +19,7 @@ app.include_router(projects.router, prefix="/projects", tags=["projects"])
 
 @app.get("/", response_class=HTMLResponse)
 def home():
-    blogposts = os.listdir("app/templates/blogposts")
+    blogposts = blog.sort_blogposts(os.listdir("app/templates/blogposts"))
     html = render_markdown(
         "home.md",
         {

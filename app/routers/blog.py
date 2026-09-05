@@ -7,10 +7,26 @@ from app.utils.render_markdown import render_markdown
 
 router = APIRouter()
 
+# Posts not listed here are appended alphabetically after these, in listing order.
+BLOG_POST_ORDER = [
+    "dotfiles_what_why_and_how.md",
+    "csv2md_a_small_go_cli.md",
+    "gwr_claims_bot_automating_delay_repay.md",
+]
+
+
+def sort_blogposts(blogposts):
+    def sort_key(name):
+        if name in BLOG_POST_ORDER:
+            return (0, BLOG_POST_ORDER.index(name))
+        return (1, name)
+
+    return sorted(blogposts, key=sort_key)
+
 
 @router.get("/", response_class=HTMLResponse)
 def blog():
-    blogposts = os.listdir("app/templates/blogposts")
+    blogposts = sort_blogposts(os.listdir("app/templates/blogposts"))
     html = render_markdown(
         "blog.md",
         {
