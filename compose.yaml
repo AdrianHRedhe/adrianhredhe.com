@@ -15,14 +15,23 @@ services:
       - "443:443"
       - "443:443/udp"
 
-    environment:
-      env_file: .env
+    env_file:
+      - .env
 
     volumes:
-      - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      # Issued certificates live in /data. Without a volume they are lost on
+      # every container recreation, which re-runs the ACME DNS challenge and
+      # burns Let's Encrypt duplicate-certificate rate limits.
+      - caddy-data:/data
+      - caddy-config:/config
 
     networks:
       - app-network
+
+volumes:
+  caddy-data:
+  caddy-config:
 
 networks:
   app-network:
