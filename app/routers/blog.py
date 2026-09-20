@@ -12,6 +12,7 @@ BLOG_POST_ORDER = [
     "dotfiles_what_why_and_how.md",
     "csv2md_a_small_go_cli.md",
     "gwr_claims_bot_automating_delay_repay.md",
+    "plantstatus_a_houseplant_with_a_kafka_pipeline.md",
 ]
 
 
