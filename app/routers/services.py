@@ -11,6 +11,7 @@ router = APIRouter()
 
 SERVICES = [
     {"name": "Plant Status", "url": "/services/plantstatus"},
+    {"name": "RepoSage", "url": "/services/repo_sage"},
 ]
 
 
@@ -32,5 +33,14 @@ def plantstatus():
     html = render_markdown(
         "services/plantstatus.md",
         {"grafana_url": get_grafana_url(), "theme": get_theme("green")},
+    )
+    return html
+
+
+@router.get("/repo_sage", response_class=HTMLResponse)
+def repo_sage():
+    html = render_markdown(
+        "services/repo_sage.md",
+        {"theme": get_theme("cyan")},
     )
     return html
