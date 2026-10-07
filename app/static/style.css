@@ -227,6 +227,34 @@ footer {
 }
 
 /*
+    Wide embeds (iframes of live apps/dashboards)
+
+    Usage:
+      <div class="wide-embed-outer">
+      <div class="wide-embed" style="height: ...">
+      <iframe ...></iframe>
+      </div>
+      </div>
+
+    Each page sets its own fixed pixel height on .wide-embed, tall enough
+    for the embedded content, so the iframe never shows an inner scrollbar.
+*/
+.wide-embed-outer {
+  /* Break out of the narrow article column to the full browser width,
+     so the centered box below isn't limited by it. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.wide-embed {
+  /* Centered on the page's own center line, with equal space on both
+     sides. */
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+/*
     Settings for narrower screens (Phone)
 */
 @media (max-width: 600px) {

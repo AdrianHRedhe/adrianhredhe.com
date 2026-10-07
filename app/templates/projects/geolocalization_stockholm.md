@@ -12,26 +12,16 @@ circle marks the query's true location. Have fun!
 Source and write-up: [Stockholm-Geolocalization-Retrieval on GitHub](https://github.com/AdrianHRedhe/Stockholm-Geolocalization-Retrieval).
 Also viewable directly on [Hugging Face Spaces](https://huggingface.co/spaces/AdrianHR/Geolocalization_Stockholm_Demo).
 
-<div class="geoloc-embed-outer">
-<div class="geoloc-embed">
+<div class="wide-embed-outer">
+<div class="wide-embed geoloc-embed">
 <iframe src="https://geolocalization_v1.adrianhredhe.com/" width="100%" height="100%" frameborder="0"></iframe>
 </div>
 </div>
 
 <style>
-.geoloc-embed-outer {
-  /* Break out of the narrow 800px article column to the full browser
-     width, so the centered box below isn't limited by it. */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-}
-
 .geoloc-embed {
-  /* Centered on the page's own center line, with equal space on both
-     sides - wide enough for the two Gradio panels to sit side by side. */
-  max-width: 1400px;
-  margin-inline: auto;
+  /* Wide enough (via .wide-embed) for the two Gradio panels to sit
+     side by side, and tall enough to avoid an inner scrollbar. */
   height: 1850px;
 }
 
